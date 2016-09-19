@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Twitchtv Viewer</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </head>
+  <body>
+    <main class="container">
+      <div clss="row">
+        <div class="col-xs-6 col-xs-offset-3 text-center" id="">
+          <h2>Twitchtv Viewer</h2>
+          <ul class="nav nav-pills nav-justified" id="navbar">
+            <li class="active"><a data-toggle="pill" href="#all">All</a></li>
+            <li><a data-toggle="pill" href="#online">Online</a></li>
+            <li><a data-toggle="pill" href="#offline">Offline</a></li>
+          </ul>
+
+          <div class="col-xs-8 col-xs-offset-2 text-center" id="search-section">
+            <input type="text" class="form-control" placeholder="Search for channel">
+          </div>
+
+          <div class="col-xs-3">
+            <!-- <input type="text" class="form-control" placeholder="Search for channel"> -->
+          </div>
+
+
+          <!-- <div class="input-group">
+            <span class="input-group-addon fa fa-search" id="basic-addon1"></span> -->
+            <!-- <input type="text" class="form-control" placeholder="Search for channel" aria-describedby="basic-addon1"> -->
+          <!-- </div> -->
+
+          <div class="tab-content col-xs-12 text-left">
+            <hr>
+            <div id="all" class="tab-pane fade in active">
+              <p>Here is All Chanel</p>
+            </div>
+            <div id="online" class="tab-pane fade">
+              <p>Here is OnLine Chanel</p>
+            </div>
+            <div id="offline" class="tab-pane fade">
+              <p>Here is OffLine Chanel</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="container">
+      <div class="row">
+        <div class="col-xs-12 text-center" id="mysocial">
+          <a href="https://github.com/AsimoLoveGym" target="_blank"><i class="fa fa-github fa-2x"></i></a>
+          <a href="https://www.linkedin.com/in/zhuangzhuang-xia-45304b6b" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+          <a href="mailto:xiazhuangz@gmail.com" target="_blank"><i class="fa fa-envelope-square fa-2x"></i></a>
+        </div>
+    </div>
+    <div class="text-center">
+      <p>For <a href="https://www.freecodecamp.com/challenges/use-the-twitchtv-json-api" target="_blank">Free Code Camp project</a></p>
+      <p> Copyright © <a href="https://www.freecodecamp.com/asimolovegym" target="_blank">Joey Xia</a>. All right reserved. </p>
+    </div>
+    </footer>
+  </body>
+</html>
