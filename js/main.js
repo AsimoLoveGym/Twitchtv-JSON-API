@@ -28,6 +28,11 @@ for (var i=0; i < channelsList.length; i++) {
      channelInfo.name = data.display_name;
      channelInfo.video_url = data.url;
      channelInfo.channel_photo = data.logo;
+     channelInfo.game = data.game;
+     channelInfo.stream_status = data.status;
+     channelInfo.views = data.views;
+     channelInfo.followers = data.followers;
+
      if (data.mature) {
        channelInfo.badge_class = "badge-success";
        channelInfo.channel_status = "On";
@@ -36,25 +41,52 @@ for (var i=0; i < channelsList.length; i++) {
        channelInfo.channel_status = "Off";
      }
      channels.push(new Channel(channelInfo));
-     var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
-     + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
-
-     + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
-     $("#all").append(addItem);
-    //  不用append两遍啊少年，直接append给两个channel就好了
 
      if (data.mature) {
-       var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
-       + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
-
-       + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
-       $("#online").append(addItem);
+       var addItem = '<div class="col-xs-12 channel-list ' + channelInfo.name.toLowerCase() +'"><figure class="col-xs-2"><img src="'+ channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+        + '</figure><a href="'+ channelInfo.video_url + '" target="_blank" class="col-xs-6 text-center vertical-center-text">' + channelInfo.name + '</a>'
+        + '<span class="col-xs-2 fa fa-info-circle fa-2x text-center vertical-center-text text-info" data-toggle="collapse" data-target="#' + channelInfo.name.toLowerCase() + '"></span>'
+        + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div>'
+        + '<div class="col-xs-12 vertical-center-text collapse" id="' + channelInfo.name.toLowerCase() + '">'
+        + '<div class="col-xs-12 panel panel-primary"><div class="panel-heading">Game: ' + channelInfo.game + '</div>'
+        + '<div class="panel-body bg-info text-center"><h5 class="text-center">' + channelInfo.stream_status + '</h5>'
+        + '<h6 class="text-right">' + channelInfo.followers + ' Followers</h6><h6 class="text-right">' + channelInfo.views + ' Watching</h6>'
+        + '<a href="' + channelInfo.video_url + '" target="_blank" class="btn btn-primary" role="button">Watch</a></div></div></div></div>';
+        // $("#online").append(addItem);
+        // id using limitation for collapse targeting, use a special one for online case
      } else {
        var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
        + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
        + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
        $("#offline").append(addItem);
      }
+     $("#all").append(addItem);
+
+     // id using limitation for collapse targeting, treat online case specially
+     if (data.mature) {
+       var addItem = '<div class="col-xs-12 channel-list ' + channelInfo.name.toLowerCase() +'"><figure class="col-xs-2"><img src="'+ channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+        + '</figure><a href="'+ channelInfo.video_url + '" target="_blank" class="col-xs-6 text-center vertical-center-text">' + channelInfo.name + '</a>'
+        + '<span class="col-xs-2 fa fa-info-circle fa-2x text-center vertical-center-text text-info" data-toggle="collapse" data-target="#' + channelInfo.name.toLowerCase() + channelInfo.channel_status + '"></span>'
+        + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div>'
+        + '<div class="col-xs-12 vertical-center-text collapse" id="' + channelInfo.name.toLowerCase() + channelInfo.channel_status + '">'
+        + '<div class="col-xs-12 panel panel-primary"><div class="panel-heading">Game: ' + channelInfo.game + '</div>'
+        + '<div class="panel-body bg-info text-center"><h5 class="text-center">' + channelInfo.stream_status + '</h5>'
+        + '<h6 class="text-right">' + channelInfo.followers + ' Followers</h6><h6 class="text-right">' + channelInfo.views + ' Watching</h6>'
+        + '<a href="' + channelInfo.video_url + '" target="_blank" class="btn btn-primary" role="button">Watch</a></div></div></div></div>';
+        $("#online").append(addItem);
+     }
+
+    //  var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+    //  + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
+     //
+    //  + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
+    //  $("#all").append(addItem);
+
+    //  if (data.mature) {
+    //    $("#online").append(addItem);
+    //  } else {
+    //    $("#offline").append(addItem);
+    //  }
    }
   });
 }
