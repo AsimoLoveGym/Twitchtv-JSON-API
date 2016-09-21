@@ -23,7 +23,7 @@ for (var i=0; i < channelsList.length; i++) {
      'Client-ID': '4w6yeo2vveef3gnql5k2qeezykzzt3x'
    },
    success: function(data) {
-    //  console.log(data);
+     console.log(data);
      var channelInfo = {};
      channelInfo.name = data.display_name;
      channelInfo.video_url = data.url;
@@ -36,18 +36,21 @@ for (var i=0; i < channelsList.length; i++) {
        channelInfo.channel_status = "Off";
      }
      channels.push(new Channel(channelInfo));
-     var addItem = '<div class="col-xs-12 ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+     var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
      + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
+
      + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
      $("#all").append(addItem);
+    //  不用append两遍啊少年，直接append给两个channel就好了
 
      if (data.mature) {
-       var addItem = '<div class="col-xs-12 ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+       var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
        + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
+
        + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
        $("#online").append(addItem);
      } else {
-       var addItem = '<div class="col-xs-12 ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
+       var addItem = '<div class="col-xs-12 channel-list ' +channelInfo.name.toLowerCase() + '"><figure class="col-xs-2"><img src="' + channelInfo.channel_photo + '" alt="channel photo" class="img-circle channel-photo center-block">'
        + '</figure><a href="' + channelInfo.video_url + '" target="_blank" class="col-xs-8 text-center vertical-center-text">'+ channelInfo.name + '</a>'
        + '<div class="col-xs-2 vertical-center-text"><span class="badge ' + channelInfo.badge_class + '">' + channelInfo.channel_status + '</span></div></div>';
        $("#offline").append(addItem);
@@ -86,4 +89,8 @@ var filter = function() {
   // if (item.title.toLowerCase().indexOf(filterWords) > -1) {
 
 // }
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

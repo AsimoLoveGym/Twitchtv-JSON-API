@@ -38,3 +38,7 @@ figure {
 .vertical-center-text {
   line-height: 50px;
 }
+
+.channel-list {
+  margin-bottom: 1em;
+}
