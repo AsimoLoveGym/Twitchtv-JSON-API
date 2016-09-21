@@ -16,6 +16,7 @@
 
   </head>
   <body>
+    <!-- <input type="text" id="inputTry" onkeypress="displayResult()"> -->
     <main class="container">
 
       <div clss="row">
@@ -29,12 +30,12 @@
           </ul>
 
           <div class="col-xs-8 col-xs-offset-2 text-center" id="search-section">
-            <input type="text" class="form-control" placeholder="Search for channel">
+            <input type="text" class="form-control" placeholder="Search for channel" id="search-bar" onkeyup="filter()">
           </div>
 
           <div class="tab-content col-xs-12 text-left">
             <hr>
-            <div id="all" class="tab-pane fade in active row vertical-align">
+            <div id="all" class="tab-pane fade in active">
               <!-- <figure class="col-xs-2">
                 <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ogamingsc2-profile_image-9021dccf9399929e-300x300.jpeg" alt="channel photo" class="img-circle channel-photo center-block">
               </figure>
