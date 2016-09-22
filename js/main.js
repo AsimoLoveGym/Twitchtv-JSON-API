@@ -22,7 +22,7 @@ var img_placeholder = "https://www.acspri.org.au/sites/acspri.org.au/files/profi
 var url_placeholder = "https://www.twitch.tv/";
 var status_placeholder = "Closed";
 
-var channelsList = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "sodapoppin", "moonducktv","forTest","imaqtpie","etozhemad","amazhs"];
+var channelsList = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "sodapoppin", "moonducktv","forTest","imaqtpie","etozhemad","amazhs","mushisgosu"];
 
 for (var i=0; i < channelsList.length; i++) {
   // console.log(i);
@@ -157,6 +157,9 @@ function numberWithCommas(x) {
 }
 
 var show = function() {
+  // Hidden Channels Loading Button after one click
+  $("#load-button").addClass("hidden");
+
   // console.log(channels_detail);
   // console.log(channels_status);
   for (var i = 0; i < channels_detail.length; i ++) {
